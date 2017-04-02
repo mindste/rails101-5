@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
   def  update
     @movie  =  Movie.find(params[:id])
     if  @movie.update(movie_params)
-      redirect_to  movies_path
+      redirect_to  movies_path,  notice: "更新成功！"
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class MoviesController < ApplicationController
     @movie  =  Movie.find(params[:id])
     @movie.destroy
 
-    redirect_to  movies_path
+  redirect_to  movies_path，alert: "删除成功！"
   end
 
 
