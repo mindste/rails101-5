@@ -1,0 +1,12 @@
+<h2  class="text-center">  添加电影 </h2>
+<div  class="col-md-4  col-md-offset-4">
+    <%=  form_for  @movie  do  |f| %>
+    电影名称
+    <%= f.label  :title,  class: "btn  btn-default"  %>
+    <br/>
+    内容简介
+    <%= f.label  :description,  class: "btn  btn-default"  %>
+    <br/>
+    <%= f.submit  "Submit",    disable_with:  "Submiting...", class:  "btn  btn-primary  btn-default" %>
+    <%  end  %>
+</div>
