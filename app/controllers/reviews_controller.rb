@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+ before_action  :authenticate_user!,  only: [:edit, :update, :destroy]
+
 
   def  index
     @reviews  =  Review.all
@@ -22,7 +24,33 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def   edit
+    @movie  =  Movie.find(params[:movie_id])
+    @review  =   Review.find(params[:id])
+    @review.movie  =  @movie
+  end
 
+  def  update
+    @movie  =  Movie.find(params[:movie_id])
+    @review  =   Review.find(params[:id])
+    @review.movie  =  @movie
+
+    if   @review.update(review_params)
+      redirect_to     account_reviews_path
+    else
+      render :edit
+    end
+  end
+
+  def   destroy
+    @movie  =Movie.find(params[:movie_id])
+    @review  =  Review.find(params[:id])
+    @review.movie  =  @movie
+
+    @review.destroy
+
+    redirect_to   account_reviews_path
+  end
 
 
 

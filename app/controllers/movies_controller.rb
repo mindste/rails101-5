@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     @movie.user  =  current_user
 
     if  @movie.save
-      current.user.join!(@movie)  
+      current_user.join!(@movie)
       redirect_to  movies_path
     else
       render  :new
@@ -41,7 +41,7 @@ class MoviesController < ApplicationController
   def  destroy
     @movie.destroy
 
-  redirect_to  movies_path，alert: "删除成功！"
+    redirect_to  movies_path, alert: "删除成功！"
   end
 
 
